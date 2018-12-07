@@ -1,0 +1,50 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SqlCsvExport.Forms"
+        xmlns:ModelView="clr-namespace:SqlCsvExport.ModelView" x:Class="SqlCsvExport.Forms.SetupForm"
+        mc:Ignorable="d"
+        Title="Параметры системы" Height="450" Width="800">
+    <Window.DataContext>
+        <ModelView:SetupModelView/>
+    </Window.DataContext>
+    <Grid Background="#88002080">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1" Grid.Row="2" Content="Максимальное количество строк:" VerticalAlignment="Center" HorizontalAlignment="left"/>
+        <TextBox x:Name="RowCountEdit" Grid.Column="2" Grid.Row="2" Height="30"  VerticalContentAlignment="Center" Text="{Binding NumRows}" />
+        <Label Grid.Column="1" Grid.Row="3" Content="Папка экспорта:" VerticalAlignment="Center" HorizontalAlignment="left"/>
+        <Grid Grid.Column="2" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="FolderEdit" Height="30"  VerticalContentAlignment="Center" Text="{Binding FolderName}" />
+            <Button x:Name="ChangeDir" Grid.Column="2" Height="20" Width="20" Content="..." Click="ChangeDir_Click"  />
+        </Grid>
+        <Button Grid.Column="1" Grid.Row="5" x:Name="OkBotton" Background="{x:Null}"  IsDefault="True" Click="OkBotton_Click" >
+            <TextBlock HorizontalAlignment="Center" Text="Ok" TextWrapping="Wrap" TextAlignment="Center"  />
+        </Button>
+
+        <Button Grid.Column="2" Grid.Row="5" x:Name="CancelBotton" Background="{x:Null}"  IsCancel="True">
+            <TextBlock HorizontalAlignment="Center" Text="Отмена" TextWrapping="Wrap" TextAlignment="Center" />
+        </Button>
+
+    </Grid>
+</Window>
